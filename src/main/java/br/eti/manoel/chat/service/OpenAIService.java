@@ -9,6 +9,7 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.util.Locale;
 
 @Service
 public class OpenAIService {
@@ -30,7 +31,7 @@ public class OpenAIService {
     private final ObjectMapper mapper = new ObjectMapper();
 
     public String gerarResposta(String mensagemUsuario) throws Exception {
-        String payload = String.format("""
+        String payload = String.format(Locale.US, """
             {
               "model": "%s",
               "messages": [{"role": "user", "content": "%s"}],
